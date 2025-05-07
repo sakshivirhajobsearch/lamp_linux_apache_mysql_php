@@ -1,19 +1,17 @@
 <?php
-$host = 'localhost';
-$db   = 'lamp_user_app';
-$user = 'root';
-$pass = 'admin';
-$charset = 'utf8mb4';
-
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$dsn = 'mysql:host=localhost;dbname=book_db';
+$username = 'webuser';
+$password = 'Admin@1234!';
 $options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
 ];
 
+
 try {
-     $pdo = new PDO($dsn, $user, $pass, $options);
-} catch (\PDOException $e) {
-     throw new \PDOException($e->getMessage(), (int)$e->getCode());
+    $pdo = new PDO($dsn, $username, $password, $options);
+    echo "Connected successfully.";
+} catch (PDOException $e) {
+    die('Database connection failed: ' . $e->getMessage());
 }
 ?>
+
